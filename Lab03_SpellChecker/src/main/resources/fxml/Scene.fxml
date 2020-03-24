@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.spellchecker.FXMLController">
    <top>
       <Label text="Lab03_SpellChecker" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -13,4 +18,47 @@
          </BorderPane.margin>
       </Label>
    </top>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <children>
+                  <Label text="Choose the language:">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ChoiceBox fx:id="language" />
+               </children>
+            </HBox>
+            <TextField fx:id="txtResult" prefHeight="99.0" prefWidth="478.0" />
+            <HBox alignment="TOP_RIGHT">
+               <children>
+                  <Button fx:id="btnCheck" mnemonicParsing="false" onAction="#doControl" text="Spell Check" />
+               </children>
+            </HBox>
+            <Label text="Wrong words">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="txtControl" />
+            <HBox alignment="TOP_RIGHT">
+               <children>
+                  <Label fx:id="lblError" textFill="#ec0505" />
+                  <Button fx:id="btnReset" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#doReset" text="Button">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Label fx:id="lblTempo">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

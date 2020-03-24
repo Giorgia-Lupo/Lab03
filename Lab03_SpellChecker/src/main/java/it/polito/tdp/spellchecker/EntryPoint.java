@@ -2,6 +2,9 @@ package it.polito.tdp.spellchecker;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+
+import it.polito.tdp.spellchecker.model.Dizionario;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,10 +15,19 @@ public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
+    	Dizionario dizionario = new Dizionario();
+    	FXMLController controller; //variabile definita ma non valorizzata. Devo recuperare un riferimento al Controller
+    	
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+    	
+    	Parent root = loader.load(); //FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));        		
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+       // scene.getStylesheets().add("/styles/Styles.css"); POSSO CANCELLARLO
+    	
+    	controller = loader.getController(); //dal loader recupero il controller, FXML vede qual è il controller associato al file FXML
+    	controller.setDizionario(dizionario);    	
+    	
+        
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
